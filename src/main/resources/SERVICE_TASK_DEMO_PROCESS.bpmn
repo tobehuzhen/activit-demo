@@ -10,7 +10,15 @@
     <serviceTask activiti:class="com.personal.activiti.service.SecondTaskService" activiti:exclusive="true" id="_6" name="二次服务任务">
       <documentation id="_6_D_1"><![CDATA[该流程第二次需执行的服务任务]]></documentation>
     </serviceTask>
-    <sequenceFlow id="_7" sourceRef="_4" targetRef="_6"/>
+    <sequenceFlow id="_7" sourceRef="_4" targetRef="_6">
+      <extensionElements>
+        <activiti:executionListener event="start">
+          <activiti:field>
+            <activiti:string/>
+          </activiti:field>
+        </activiti:executionListener>
+      </extensionElements>
+    </sequenceFlow>
     <sequenceFlow id="_8" sourceRef="_6" targetRef="_3"/>
     <userTask activiti:exclusive="true" id="_9" name="UserTask"/>
     <subProcess activiti:exclusive="true" id="_10" name="SubProcess" triggeredByEvent="false"/>
@@ -24,6 +32,13 @@
     </subProcess>
     <sequenceFlow id="_16" sourceRef="_4" targetRef="_15"/>
     <endEvent id="_19" name="EndEvent"/>
+    <userTask activiti:exclusive="true" id="_20" name="UserTask"/>
+    <eventBasedGateway eventGatewayType="Exclusive" gatewayDirection="Unspecified" id="_21" instantiate="false" name="EventGateway"/>
+    <sequenceFlow id="_23" sourceRef="_22" targetRef="_20">
+      <extensionElements>
+        <activiti:executionListener event="start"/>
+      </extensionElements>
+    </sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">
     <bpmndi:BPMNPlane bpmnElement="SERVICE_TASK_DEMO_PROCESS">
@@ -95,6 +110,18 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_19" id="Shape-_19">
         <omgdc:Bounds height="32.0" width="32.0" x="-285.0" y="390.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_20" id="Shape-_20">
+        <omgdc:Bounds height="82.0" width="95.0" x="185.0" y="45.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="82.0" width="95.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_21" id="Shape-_21">
+        <omgdc:Bounds height="32.0" width="32.0" x="210.0" y="495.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>

@@ -6,6 +6,7 @@
         <activiti:executionListener class="com.personal.activiti.listener.StartEventExecutionListener" event="start"/>
         <activiti:executionListener class="com.personal.activiti.listener.EndEventExecutionListener" event="end"/>
         <activiti:executionListener class="com.personal.activiti.listener.EndEventExecutionListener" event="end"/>
+        <activiti:executionListener event="start"/>
       </extensionElements>
     </startEvent>
     <endEvent id="_3" name="EndEvent">
@@ -17,7 +18,11 @@
       <extensionElements>
         <activiti:executionListener class="com.personal.activiti.listener.StartTaskExecutionListener" event="start"/>
         <activiti:taskListener event="create"/>
+        <activiti:taskListener event="create"/>
+        <activiti:executionListener event="start"/>
+        <activiti:taskListener event="create"/>
       </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false"/>
     </userTask>
     <sequenceFlow id="_5" sourceRef="_2" targetRef="_4">
       <extensionElements>
@@ -27,6 +32,8 @@
     <sequenceFlow id="_6" sourceRef="_4" targetRef="_3"/>
     <serviceTask activiti:exclusive="true" id="_7" name="ServiceTask"/>
     <sequenceFlow id="_8" sourceRef="_2" targetRef="_7"/>
+    <boundaryEvent attachedToRef="_4" cancelActivity="true" id="_9" name="BoundaryEvent"/>
+    <userTask activiti:exclusive="true" id="_10" name="UserTask"/>
   </process>
   <bpmndi:BPMNDiagram documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">
     <bpmndi:BPMNPlane bpmnElement="ACTIVITI_DEMO_PROCESS">
@@ -43,9 +50,9 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_4" id="Shape-_4">
-        <omgdc:Bounds height="55.0" width="85.0" x="355.0" y="260.0"/>
+        <omgdc:Bounds height="67.0" width="95.0" x="350.0" y="255.0"/>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+          <omgdc:Bounds height="67.0" width="95.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_7" id="Shape-_7">
@@ -54,16 +61,28 @@
           <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_10" id="Shape-_10">
+        <omgdc:Bounds height="55.0" width="85.0" x="295.0" y="45.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9" id="Shape-_9">
+        <omgdc:Bounds height="32.0" width="32.0" x="360.0" y="275.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="10.0" y="20.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_5" id="BPMNEdge__5" sourceElement="_2" targetElement="_4">
         <omgdi:waypoint x="101.0" y="282.0"/>
         <omgdi:waypoint x="170.0" y="355.0"/>
-        <omgdi:waypoint x="397.5" y="315.0"/>
+        <omgdi:waypoint x="397.5" y="322.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_6" id="BPMNEdge__6" sourceElement="_4" targetElement="_3">
-        <omgdi:waypoint x="440.0" y="287.5"/>
+        <omgdi:waypoint x="445.0" y="288.5"/>
         <omgdi:waypoint x="625.0" y="291.0"/>
         <bpmndi:BPMNLabel>
           <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>

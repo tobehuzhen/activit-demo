@@ -7,5 +7,11 @@
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/ACTIVITI_DEMO_PROCESS.bpmn">
       <view grid="false" />
     </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/TriggerAutoProcess.bpmn">
+      <view grid="false" />
+    </stateFile>
+    <stateFile url="file://$PROJECT_DIR$/src/main/resources/TimerStartProcess.bpmn">
+      <view grid="false" />
+    </stateFile>
   </component>
 </project>

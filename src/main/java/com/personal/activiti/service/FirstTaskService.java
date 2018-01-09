@@ -3,6 +3,8 @@ package com.personal.activiti.service;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
 
+import java.util.List;
+
 /**
  * Created by huzhen on 2017/11/2.
  */

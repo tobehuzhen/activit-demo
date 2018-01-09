@@ -13,6 +13,7 @@
 
     <!-- Database configurations -->
     <property name="databaseSchemaUpdate" value="drop-create" />
+    <property name="jobExecutorActivate" value="true" />
 
 	<!-- Test logger -->
 	<!-- <property name="configurators">
